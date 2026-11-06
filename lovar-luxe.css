@@ -1,0 +1,152 @@
+/* LOVAR LUXE MOTION SYSTEM — progressive enhancement */
+:root {
+  --serif: "Cormorant Garamond", Georgia, serif;
+  --sans: "Manrope", "Alexandria", Arial, sans-serif;
+  --ease-luxe: cubic-bezier(.22,.68,0,1);
+  --shadow-luxe: 0 24px 70px rgba(43,35,24,.12);
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+html[lang="ar"] body,
+body.lang-ar {
+  font-family: "Alexandria", "IBM Plex Sans Arabic", Tahoma, sans-serif !important;
+  letter-spacing: 0;
+}
+html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3,
+body.lang-ar h1, body.lang-ar h2, body.lang-ar h3 {
+  font-family: "Alexandria", "IBM Plex Sans Arabic", Tahoma, sans-serif !important;
+  letter-spacing: 0;
+  line-height: 1.45;
+}
+html[lang="ar"] .wordmark, html[lang="ar"] .logo,
+body.lang-ar .wordmark, body.lang-ar .logo {
+  font-family: "Cormorant Garamond", Georgia, serif !important;
+  letter-spacing: .18em;
+}
+::selection { background: #c7ad7e; color: #211f1b; }
+:focus-visible {
+  outline: 2px solid #ad8c51 !important;
+  outline-offset: 3px;
+}
+.site-header, .header {
+  transition: background .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+.site-header.is-scrolled, .header.is-scrolled {
+  background: rgba(255,253,250,.88);
+  box-shadow: 0 8px 30px rgba(35,29,21,.06);
+  border-color: rgba(173,140,81,.22);
+}
+.btn, .mini-btn, .filter-chip, .icon-btn, .lang, .plain {
+  transition: transform .35s var(--ease-luxe), background .3s ease,
+              color .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+.btn:hover, .mini-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(33,31,27,.16);
+}
+.btn:active, .mini-btn:active { transform: translateY(-1px) scale(.985); }
+.product-card {
+  transition: transform .55s var(--ease-luxe), filter .4s ease;
+  will-change: transform;
+}
+.product-card:hover { transform: translateY(-7px); }
+.product-image, .photo, .hero-image, .story-image {
+  overflow: hidden;
+  isolation: isolate;
+}
+.product-image img, .photo img, .hero-image img, .story-image img {
+  transition: transform 1s var(--ease-luxe), filter .7s ease;
+}
+.product-card:hover .product-image img,
+.photo:hover img, .hero-image:hover img, .story-image:hover img {
+  transform: scale(1.045);
+  filter: saturate(.92);
+}
+.product-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255,255,255,.17), transparent 42%, rgba(173,140,81,.08));
+  opacity: 0;
+  transition: opacity .5s ease;
+}
+.product-card:hover .product-image::after { opacity: 1; }
+.hero-copy > *, .details > *, .section-head > * { animation: luxe-rise .85s var(--ease-luxe) both; }
+.hero-copy > *:nth-child(2) { animation-delay: .08s; }
+.hero-copy > *:nth-child(3) { animation-delay: .16s; }
+.hero-copy > *:nth-child(4) { animation-delay: .24s; }
+@keyframes luxe-rise {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.motion-ready .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .8s var(--ease-luxe), transform .8s var(--ease-luxe);
+}
+.motion-ready .reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.motion-ready .reveal[data-reveal-delay="1"] { transition-delay: .08s; }
+.motion-ready .reveal[data-reveal-delay="2"] { transition-delay: .16s; }
+.motion-ready .reveal[data-reveal-delay="3"] { transition-delay: .24s; }
+.lovar-progress {
+  position: fixed;
+  z-index: 1000;
+  inset: 0 auto auto 0;
+  height: 2px;
+  width: 100%;
+  pointer-events: none;
+  transform: scaleX(var(--lovar-progress, 0));
+  transform-origin: left center;
+  background: linear-gradient(90deg, #8c6e39, #d8c39b, #ad8c51);
+}
+html[dir="rtl"] .lovar-progress { transform-origin: right center; }
+.panel, .modal, .drawer, .ritual-banner {
+  transition: box-shadow .45s ease, transform .45s var(--ease-luxe);
+}
+.panel:hover { box-shadow: var(--shadow-luxe); }
+.field-control, .field input, .field select, .field textarea,
+.newsletter-form input, .coupon input {
+  transition: border-color .25s ease, box-shadow .25s ease, background .25s ease;
+}
+.field-control:focus, .field input:focus, .field select:focus,
+.field textarea:focus, .newsletter-form input:focus, .coupon input:focus {
+  border-color: #ad8c51;
+  box-shadow: 0 0 0 4px rgba(173,140,81,.11);
+}
+.toast, .notice, .product-badge { backdrop-filter: blur(12px); }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  .motion-ready .reveal { opacity: 1; transform: none; }
+}
+@media (hover: none) {
+  .product-card:hover { transform: none; }
+}
+
+/* Dedicated LOVAR collection page */
+.shop-intro{padding:66px 6.2% 44px;background:linear-gradient(115deg,#f4f0e8 0%,#fffdfa 65%,#eee7da 100%);text-align:center}
+.shop-breadcrumb{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#8a8174;margin-bottom:28px}
+.shop-breadcrumb a{color:var(--gold-dark)}
+.shop-intro h1{font-family:var(--serif);font-weight:500;font-size:clamp(42px,6vw,72px);line-height:1;margin:15px 0 12px}
+.shop-intro p{font-size:12px;color:var(--muted);line-height:1.8;margin:0}
+.collection-meta{display:flex;justify-content:space-between;gap:15px;align-items:center;margin:-12px 0 24px;padding-bottom:15px;border-bottom:1px solid var(--line);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.all-products-cta{display:flex;justify-content:center;margin-top:42px}
+.shop-page .hero,.shop-page .trust-strip,.shop-page .ritual-banner,.shop-page .story,.shop-page .newsletter{display:none!important}
+.shop-page main>.section{padding-top:54px;min-height:52vh}
+.shop-page .shop-list-head{margin-bottom:34px}
+.shop-page .nav-links a.active{color:var(--gold-dark)}
+.shop-page .product-grid{row-gap:42px}
+.shop-page .product-image{height:clamp(230px,28vw,340px)}
+@media(max-width:760px){.shop-intro{padding:42px 5% 32px}.collection-meta{font-size:8px;align-items:flex-start;flex-direction:column;gap:7px}.shop-page main>.section{padding:36px 5% 65px}.shop-page .product-image{height:230px}}
